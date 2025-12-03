@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
-require("dotenv").config();
+require("dotenv").config(); // Make sure this line exists
 
 const app = express();
 app.use(express.json());
@@ -19,6 +19,10 @@ mongoose.connect(process.env.DBCONNECTIONSTRING)
 const userRoutes = require("./routes/userRoutes");
 const appointmentRoutes = require("./routes/appoinmentRoutes");
 const labRoutes = require("./routes/labRoutes");
+const adminRoutes = require("./routes/adminRoutes");
+app.use("/api/admin", adminRoutes);
+
+
 
 app.use("/api", userRoutes);
 app.use("/api", appointmentRoutes);
